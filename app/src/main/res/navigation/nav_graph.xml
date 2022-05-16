@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/filmListFragment">
-
+    app:startDestination="@id/movieListFragment">
     <fragment
-        android:id="@+id/filmListFragment"
-        android:name="com.example.hw17.ui.FilmListFragment"
-        android:label="fragment_film_list"
-        tools:layout="@layout/fragment_film_list" />
+        android:id="@+id/movieListFragment"
+        android:name="com.example.hw17.ui.MovieListFragment"
+        android:label="fragment_movie_list"
+        tools:layout="@layout/fragment_movie_list" />
 </navigation>
