@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.example.hw17.databinding.FragmentComingSoonBinding
+import com.example.hw17.ui.popular.MovieAdapter
+import com.example.hw17.viewModels.ComingSoonViewModel
 
 
 class ComingSoonFragment : Fragment() {
     lateinit var binding:FragmentComingSoonBinding
-
+    val vModel:ComingSoonViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,7 +36,11 @@ class ComingSoonFragment : Fragment() {
     }
 
     private fun initView() {
-
+        val adapter=MovieAdapter({})
+        binding.rvComingSoon.adapter=adapter
+        vModel.listOfComingSoon.observe(requireActivity()){
+            adapter.submitList(it)
+        }
     }
 
 

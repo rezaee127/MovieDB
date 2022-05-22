@@ -9,4 +9,9 @@
         android:name="com.example.hw17.ui.popular.MovieListFragment"
         android:label="fragment_movie_list"
         tools:layout="@layout/fragment_movie_list" />
+    <fragment
+        android:id="@+id/comingSoonFragment"
+        android:name="com.example.hw17.ui.upcoming.ComingSoonFragment"
+        android:label="fragment_coming_soon"
+        tools:layout="@layout/fragment_coming_soon" />
 </navigation>

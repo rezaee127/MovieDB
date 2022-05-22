@@ -1,6 +1,7 @@
 package com.example.hw17.network
 
 
+import com.example.hw17.models.ComingSoon
 import com.example.hw17.models.Popular
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -28,10 +29,11 @@ private val retrofit = Retrofit.Builder()
 interface ApiService {
 
     @GET("movie/popular")
-    suspend fun getPopularList(
-        @Query("api_key")api:String=API_KEY
-    ): Popular
+    suspend fun getPopularList(@Query("api_key")api:String=API_KEY): Popular
 
+
+    @GET("movie/upcoming")
+    suspend fun getComingSoonList(@Query("api_key")key:String= API_KEY):ComingSoon
 }
 
 
