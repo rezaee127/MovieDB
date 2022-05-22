@@ -34,7 +34,7 @@ class MovieListFragment : Fragment() {
     }
 
     private fun initView() {
-       val adapter= PopularAdapter({})
+       val adapter= MovieAdapter({})
        binding.rvMovie.adapter=adapter
 
        vModel.listMovie.observe(viewLifecycleOwner){

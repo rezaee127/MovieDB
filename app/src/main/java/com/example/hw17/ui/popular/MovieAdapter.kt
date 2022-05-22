@@ -15,8 +15,8 @@ import com.example.hw17.R
 import com.example.hw17.models.Popular
 
 
-class PopularAdapter(var onClickItem: (Int) -> Unit) :
-    ListAdapter<Popular, PopularAdapter.ViewHolder>(PopularDiffCallback) {
+class MovieAdapter(var onClickItem: (Int) -> Unit) :
+    ListAdapter<Popular, MovieAdapter.ViewHolder>(MovieDiffCallback) {
 
     class ViewHolder(view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
         val ivMovie = view.findViewById<ImageView>(R.id.iv_movie)
@@ -49,7 +49,7 @@ class PopularAdapter(var onClickItem: (Int) -> Unit) :
     }
 
 
-    object PopularDiffCallback : DiffUtil.ItemCallback<Popular>() {
+    object MovieDiffCallback : DiffUtil.ItemCallback<Popular>() {
         override fun areItemsTheSame(oldItem: Popular, newItem: Popular): Boolean {
             return oldItem == newItem
         }
