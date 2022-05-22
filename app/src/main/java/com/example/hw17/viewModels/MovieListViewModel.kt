@@ -5,13 +5,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.hw17.Repository
-import com.example.hw17.models.Popular
-import com.example.hw17.network.MovieApi
+import com.example.hw17.models.Movie
 import kotlinx.coroutines.launch
 
 class MovieListViewModel(app:Application):AndroidViewModel(app) {
     var value=""
-    var listMovie=MutableLiveData<List<Popular>>()
+    var listMovie=MutableLiveData<List<Movie>>()
 
     init {
         getPopularList()

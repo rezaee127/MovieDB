@@ -1,7 +1,7 @@
 package com.example.hw17.network
 
 
-import com.example.hw17.models.Movies
+import com.example.hw17.models.Popular
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -30,7 +30,7 @@ interface ApiService {
     @GET("movie/popular")
     suspend fun getPopularList(
         @Query("api_key")api:String=API_KEY
-    ): Movies
+    ): Popular
 
 }
 

@@ -12,21 +12,21 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hw17.R
-import com.example.hw17.models.Popular
+import com.example.hw17.models.Movie
 
 
 class MovieAdapter(var onClickItem: (Int) -> Unit) :
-    ListAdapter<Popular, MovieAdapter.ViewHolder>(MovieDiffCallback) {
+    ListAdapter<Movie, MovieAdapter.ViewHolder>(MovieDiffCallback) {
 
     class ViewHolder(view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
         val ivMovie = view.findViewById<ImageView>(R.id.iv_movie)
         val tvTitle = view.findViewById<TextView>(R.id.tv_title)
 
-        fun bind(popular: Popular, onClickItem: (Int) -> Unit) {
-            tvTitle.text = popular.title
+        fun bind(movie: Movie, onClickItem: (Int) -> Unit) {
+            tvTitle.text = movie.title
 
             Glide.with(context)
-                .load("https://image.tmdb.org/t/p/w500/${popular.posterPath}")
+                .load("https://image.tmdb.org/t/p/w500/${movie.posterPath}")
                 .fitCenter()
                 .circleCrop()
                 .into(ivMovie)
@@ -49,12 +49,12 @@ class MovieAdapter(var onClickItem: (Int) -> Unit) :
     }
 
 
-    object MovieDiffCallback : DiffUtil.ItemCallback<Popular>() {
-        override fun areItemsTheSame(oldItem: Popular, newItem: Popular): Boolean {
+    object MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {
+        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Popular, newItem: Popular): Boolean {
+        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
             return oldItem.id == newItem.id
         }
     }
