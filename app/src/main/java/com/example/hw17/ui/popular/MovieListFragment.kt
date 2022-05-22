@@ -1,4 +1,4 @@
-package com.example.hw17.ui
+package com.example.hw17.ui.popular
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -34,9 +34,10 @@ class MovieListFragment : Fragment() {
     }
 
     private fun initView() {
-       var adapter=ResultAdapter({})
+       val adapter= PopularAdapter({})
        binding.rvMovie.adapter=adapter
-       vModel.getMovieList().observe(viewLifecycleOwner){
+
+       vModel.listMovie.observe(viewLifecycleOwner){
            adapter.submitList(it)
        }
 
