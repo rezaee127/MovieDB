@@ -1,4 +1,4 @@
-package com.example.hw17.ui
+package com.example.hw17.ui.search
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,14 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import com.example.hw17.R
-import com.example.hw17.databinding.FragmentComingSoonBinding
 import com.example.hw17.databinding.FragmentSearchBinding
+import com.example.hw17.ui.MovieAdapter
 
 
 class SearchFragment : Fragment() {
     lateinit var binding: FragmentSearchBinding
-    val vModel:SearchViewModel by viewModels()
+    val vModel: SearchViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -47,7 +46,7 @@ class SearchFragment : Fragment() {
                     binding.clSearch.visibility=View.GONE
                     binding.rvSearch.isVisible=true
                     binding.btnReturn.isVisible=true
-                    val adapter=MovieAdapter({})
+                    val adapter= MovieAdapter({})
                     binding.rvSearch.adapter=adapter
                     vModel.listOfSearchedMovies.observe(viewLifecycleOwner){
                         adapter.submitList(it)

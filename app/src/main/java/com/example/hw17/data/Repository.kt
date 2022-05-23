@@ -1,4 +1,4 @@
-package com.example.hw17
+package com.example.hw17.data
 
 import com.example.hw17.models.ComingSoon
 import com.example.hw17.models.Popular

@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.hw17.Repository
+import com.example.hw17.data.Repository
 import com.example.hw17.models.Movie
 import kotlinx.coroutines.launch
 
