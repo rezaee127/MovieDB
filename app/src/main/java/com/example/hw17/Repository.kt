@@ -16,4 +16,8 @@ object Repository {
         return MovieApi.retrofitService.getComingSoonList()
     }
 
+
+    suspend fun getSearchedMovie(movieName:String):Popular{
+        return MovieApi.retrofitService.getSearchedMovie(movieName)
+    }
 }

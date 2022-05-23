@@ -34,6 +34,12 @@ interface ApiService {
 
     @GET("movie/upcoming")
     suspend fun getComingSoonList(@Query("api_key")key:String= API_KEY):ComingSoon
+
+    @GET("search/movie")
+    suspend fun getSearchedMovie(
+        @Query("query")movieName:String,
+        @Query("api_key")key:String= API_KEY
+    ):Popular
 }
 
 

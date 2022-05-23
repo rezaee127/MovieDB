@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/movieListFragment">
+    app:startDestination="@id/searchFragment">
     <fragment
         android:id="@+id/movieListFragment"
         android:name="com.example.hw17.ui.popular.MovieListFragment"
@@ -14,4 +14,9 @@
         android:name="com.example.hw17.ui.upcoming.ComingSoonFragment"
         android:label="fragment_coming_soon"
         tools:layout="@layout/fragment_coming_soon" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.hw17.ui.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
 </navigation>

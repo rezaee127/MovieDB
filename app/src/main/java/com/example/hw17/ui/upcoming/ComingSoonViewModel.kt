@@ -1,4 +1,4 @@
-package com.example.hw17.viewModels
+package com.example.hw17.ui.upcoming
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

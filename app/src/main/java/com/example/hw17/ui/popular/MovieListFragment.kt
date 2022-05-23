@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.hw17.databinding.FragmentMovieListBinding
-import com.example.hw17.viewModels.MovieListViewModel
+import com.example.hw17.ui.MovieAdapter
 
 
 class MovieListFragment : Fragment() {
     lateinit var binding: FragmentMovieListBinding
-    val vModel:MovieListViewModel by viewModels()
+    val vModel: MovieListViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

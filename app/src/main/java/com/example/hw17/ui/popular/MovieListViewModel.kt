@@ -1,4 +1,4 @@
-package com.example.hw17.viewModels
+package com.example.hw17.ui.popular
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
