@@ -1,11 +1,11 @@
 package com.example.hw17.ui.popular
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.hw17.R
 import com.example.hw17.databinding.FragmentMovieListBinding
 import com.example.hw17.ui.MovieAdapter
 
@@ -15,7 +15,7 @@ class MovieListFragment : Fragment() {
     val vModel: MovieListViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -43,4 +43,27 @@ class MovieListFragment : Fragment() {
 
 
     }
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.action_bar_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.coming_soon_menu_item  -> {
+                findNavController().navigate(R.id.action_movieListFragment_to_comingSoonFragment)
+                true
+            }
+            R.id.search_menu_item -> {
+                findNavController().navigate(R.id.action_movieListFragment_to_searchFragment)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
 }
