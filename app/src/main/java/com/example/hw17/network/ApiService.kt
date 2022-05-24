@@ -4,6 +4,7 @@ package com.example.hw17.network
 import com.example.hw17.models.ComingSoon
 import com.example.hw17.models.Detail
 import com.example.hw17.models.Popular
+import com.example.hw17.models.Trailer
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -49,6 +50,12 @@ interface ApiService {
         @Path("movie_id")movieId:Int,
         @Query("api_key")key:String= API_KEY
     ): Detail
+
+    @GET("movie/{movie_id}/videos")
+    suspend fun getVideo(
+        @Path("movie_id")id:Int,
+        @Query("api_key")key:String= API_KEY
+    ):Trailer
 }
 
 

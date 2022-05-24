@@ -42,8 +42,9 @@ class DetailFragment : Fragment() {
     private fun initView() {
         val movieId=requireArguments().getInt("id")
         vModel.getMovieDetail(movieId)
-        //if (vModel.movie.value?.id!= 0) {
+
             vModel.getMovieDetail(movieId).observe(viewLifecycleOwner) {
+                //if (vModel.movie.value?.id!= 0) {
                 binding.tvTitle.text = it.title
                 var str = ""
                 for (genre in it.genres)
@@ -54,17 +55,24 @@ class DetailFragment : Fragment() {
                 binding.tvReleaseDate.text = it.releaseDate
                 binding.tvTagline.text = it.tagline
                 binding.ibtnPlayVideo.isEnabled = it.video
-                binding.ibtnPlayVideo.setOnClickListener {
-                    val bundle = bundleOf("id" to movieId)
-                    //findNavController().navigate(R.id.ac,bundle)
-                }
+
 
                 Glide.with(requireContext())
                     .load("https://image.tmdb.org/t/p/w500/${it.posterPath}")
                     .fitCenter()
-                    .circleCrop()
+                    //.circleCrop()
                     .into(binding.ivDetail)
             }
+        binding.ibtnPlayVideo.setOnClickListener {
+
+            vModel.getVideo(movieId).observe(requireActivity()){
+                var str=it[0].key
+                val videoUrl="https://www.youtube.com/watch?v=${str}"
+                val bundle = bundleOf("url" to videoUrl )
+                findNavController().navigate(R.id.action_detailFragment_to_videoFragment,bundle)
+            }
+
+        }
         //}
     }
 
