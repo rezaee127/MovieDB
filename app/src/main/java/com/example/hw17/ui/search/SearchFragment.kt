@@ -57,6 +57,11 @@ class SearchFragment : Fragment() {
             }
         }
 
+        binding.btnReturn.setOnClickListener {
+            binding.clSearch.visibility=View.VISIBLE
+            binding.rvSearch.isVisible=false
+            binding.btnReturn.isVisible=false
+        }
 
 
 
