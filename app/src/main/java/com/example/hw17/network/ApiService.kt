@@ -2,12 +2,14 @@ package com.example.hw17.network
 
 
 import com.example.hw17.models.ComingSoon
+import com.example.hw17.models.Detail
 import com.example.hw17.models.Popular
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://api.themoviedb.org/3/"
@@ -40,6 +42,13 @@ interface ApiService {
         @Query("query")movieName:String,
         @Query("api_key")key:String= API_KEY
     ):Popular
+
+
+    @GET("movie/{movie_id}")
+    suspend fun getMovieDetail(
+        @Path("movie_id")movieId:Int,
+        @Query("api_key")key:String= API_KEY
+    ): Detail
 }
 
 

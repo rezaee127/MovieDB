@@ -15,15 +15,31 @@
         <action
             android:id="@+id/action_movieListFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_movieListFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
     <fragment
         android:id="@+id/comingSoonFragment"
         android:name="com.example.hw17.ui.upcoming.ComingSoonFragment"
         android:label="fragment_coming_soon"
-        tools:layout="@layout/fragment_coming_soon" />
+        tools:layout="@layout/fragment_coming_soon" >
+        <action
+            android:id="@+id/action_comingSoonFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.hw17.ui.search.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.hw17.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>

@@ -24,7 +24,9 @@ class MovieAdapter(var onClickItem: (Int) -> Unit) :
 
         fun bind(movie: Movie, onClickItem: (Int) -> Unit) {
             tvTitle.text = movie.title
-
+            tvTitle.setOnClickListener {
+                onClickItem(movie.id)
+            }
             Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w500/${movie.posterPath}")
                 .fitCenter()

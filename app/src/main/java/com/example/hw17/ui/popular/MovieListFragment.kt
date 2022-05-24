@@ -2,6 +2,7 @@ package com.example.hw17.ui.popular
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -34,9 +35,11 @@ class MovieListFragment : Fragment() {
     }
 
     private fun initView() {
-       val adapter= MovieAdapter({})
+       val adapter= MovieAdapter(){
+           val bundle=bundleOf("id" to it)
+           findNavController().navigate(R.id.action_movieListFragment_to_detailFragment,bundle)
+       }
        binding.rvMovie.adapter=adapter
-
        vModel.listMovie.observe(viewLifecycleOwner){
            adapter.submitList(it)
        }
