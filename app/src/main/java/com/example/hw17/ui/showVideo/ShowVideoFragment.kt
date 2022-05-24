@@ -1,4 +1,4 @@
-package com.example.hw17.ui
+package com.example.hw17.ui.showVideo
 
 import android.annotation.SuppressLint
 import android.os.Bundle

@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/showVideoFragment"
-        android:name="com.example.hw17.ui.ShowVideoFragment"
+        android:name="com.example.hw17.ui.showVideo.ShowVideoFragment"
         android:label="fragment_show_video"
         tools:layout="@layout/fragment_show_video" />
 </navigation>
