@@ -5,10 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.hw17.R
 import com.example.hw17.databinding.FragmentDetailBinding
@@ -48,7 +46,7 @@ class DetailFragment : Fragment() {
                 str += "${genre.name},"
             binding.tvGenre.text = str
             binding.tvHomePage.text = it.homepage
-            binding.tv.text="Overview"
+            binding.tv.text = "Overview"
             binding.tvOverview.text = it.overview
             binding.tvReleaseDate.text = it.releaseDate
             binding.tvTagline.text = it.tagline

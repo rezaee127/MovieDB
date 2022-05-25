@@ -1,14 +1,16 @@
 package com.example.hw17.ui.search
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import com.example.hw17.databinding.FragmentSearchBinding
+import com.example.hw17.models.Movie
 import com.example.hw17.ui.MovieAdapter
 
 
@@ -41,26 +43,30 @@ class SearchFragment : Fragment() {
             if (binding.etSearch.text.isNullOrBlank())
                 binding.etSearch.error="Enter a name"
             else{
-                vModel.getSearchedMovie(binding.etSearch.text.toString())
-                if (vModel.listOfSearchedMovies.value?.size!=null){
-                    binding.clSearch.visibility=View.GONE
-                    binding.rvSearch.isVisible=true
-                    binding.btnReturn.isVisible=true
-                    val adapter= MovieAdapter({})
-                    binding.rvSearch.adapter=adapter
-                    vModel.listOfSearchedMovies.observe(viewLifecycleOwner){
+                //lifecycleScope.async { vModel.getSearchedMovie(binding.etSearch.text.toString()) }
+
+                vModel.getSearchedMovie(binding.etSearch.text.toString()).observe(viewLifecycleOwner){
+                    if (!it.isNullOrEmpty()){
+                        binding.clSearch.visibility=View.GONE
+                        binding.rvSearch.isVisible=true
+                        binding.btnReturn.isVisible=true
+                        val adapter= MovieAdapter({x->},{y->})
+                        binding.rvSearch.adapter=adapter
                         adapter.submitList(it)
-                    }
-                }else{
-                    Toast.makeText(requireContext(),"This movie does not exist",Toast.LENGTH_SHORT).show()
+                    }else
+                        Toast.makeText(requireContext(),"This movie does not exist",Toast.LENGTH_SHORT).show()
                 }
+
             }
+
         }
+
 
         binding.btnReturn.setOnClickListener {
             binding.clSearch.visibility=View.VISIBLE
             binding.rvSearch.isVisible=false
             binding.btnReturn.isVisible=false
+            vModel.listOfSearchedMovies= MutableLiveData<List<Movie>>()
         }
 
 
