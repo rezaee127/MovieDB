@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
@@ -15,20 +16,27 @@ import com.example.hw17.R
 import com.example.hw17.models.Movie
 
 
-class MovieAdapter(var onClickItem: (Int) -> Unit) :
+class MovieAdapter(var onClickTitle: (Int) -> Unit,var onClickPlayButton:(Int)->Unit) :
     ListAdapter<Movie, MovieAdapter.ViewHolder>(MovieDiffCallback) {
 
     class ViewHolder(view: View, private val context: Context) : RecyclerView.ViewHolder(view) {
         val ivMovie = view.findViewById<ImageView>(R.id.iv_movie)
         val tvTitle = view.findViewById<TextView>(R.id.tv_title)
+        val btnPlayVideo = view.findViewById<ImageButton>(R.id.ibtn_play_video)
 
-        fun bind(movie: Movie, onClickItem: (Int) -> Unit) {
+        fun bind(movie: Movie, onClickTitle: (Int) -> Unit,onClickPlayButton:(Int)->Unit) {
             tvTitle.text = movie.title
             tvTitle.setOnClickListener {
-                onClickItem(movie.id)
+                onClickTitle(movie.id)
             }
+            btnPlayVideo.setOnClickListener {
+                onClickPlayButton(movie.id)
+            }
+
             Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w500/${movie.posterPath}")
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.error)
                 .fitCenter()
                 .circleCrop()
                 .into(ivMovie)
@@ -46,7 +54,7 @@ class MovieAdapter(var onClickItem: (Int) -> Unit) :
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        viewHolder.bind(getItem(position), onClickItem)
+        viewHolder.bind(getItem(position), onClickTitle,onClickPlayButton)
 
     }
 

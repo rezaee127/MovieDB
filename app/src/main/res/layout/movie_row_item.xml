@@ -22,14 +22,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/avatar_1" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonLike"
-        android:layout_width="23dp"
-        android:layout_height="34dp"
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/ibtn_play_video"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="4dp"
-        app:icon="@drawable/ic_baseline_favorite_24"
-        app:iconGravity="top"
-        app:iconSize="20dp"
+        android:src="@drawable/ic_baseline_play_circle_filled_24"
         app:layout_constraintBottom_toTopOf="@+id/tv_title"
         app:layout_constraintEnd_toEndOf="@+id/iv_movie" />
 

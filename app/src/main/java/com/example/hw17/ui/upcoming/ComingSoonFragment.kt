@@ -35,7 +35,7 @@ class ComingSoonFragment : Fragment() {
     }
 
     private fun initView() {
-        val adapter= MovieAdapter({})
+        val adapter= MovieAdapter({x->},{y->})
         binding.rvComingSoon.adapter=adapter
         vModel.listOfComingSoon.observe(requireActivity()){
             adapter.submitList(it)
