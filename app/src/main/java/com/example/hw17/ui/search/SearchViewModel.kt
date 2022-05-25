@@ -16,7 +16,7 @@ class SearchViewModel:ViewModel() {
     fun getSearchedMovie(movieName:String): LiveData<List<Movie>>{
         viewModelScope.async {
             try {
-                listOfSearchedMovies.value=Repository.getSearchedMovie(movieName).movieList
+                listOfSearchedMovies.value=Repository.getSearchedMovie(movieName)
             }
             catch (e:Exception){
                 //listOfSearchedMovies.value=emptyList()

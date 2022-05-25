@@ -1,9 +1,6 @@
 package com.example.hw17.data
 
-import com.example.hw17.models.ComingSoon
-import com.example.hw17.models.Detail
-import com.example.hw17.models.Popular
-import com.example.hw17.models.Trailer
+import com.example.hw17.models.*
 import com.example.hw17.network.MovieApi
 
 object Repository {
@@ -14,13 +11,13 @@ object Repository {
 
 
 
-    suspend fun getComingSoonList():ComingSoon{
-        return MovieApi.retrofitService.getComingSoonList()
+    suspend fun getComingSoonList():List<Movie>{
+        return MovieApi.retrofitService.getComingSoonList().movies
     }
 
 
-    suspend fun getSearchedMovie(movieName:String):Popular{
-        return MovieApi.retrofitService.getSearchedMovie(movieName)
+    suspend fun getSearchedMovie(movieName:String):List<Movie>{
+        return MovieApi.retrofitService.getSearchedMovie(movieName).movieList
     }
 
     suspend fun getMovieDetail(movieId:Int): Detail{

@@ -19,7 +19,7 @@ class ComingSoonViewModel:ViewModel() {
     fun getComingSoonList(){
         viewModelScope.launch {
             try {
-                listOfComingSoon.value= Repository.getComingSoonList().movies
+                listOfComingSoon.value= Repository.getComingSoonList()
 
             }catch (e:Exception){
 
