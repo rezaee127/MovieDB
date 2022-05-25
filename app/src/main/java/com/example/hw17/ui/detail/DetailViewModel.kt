@@ -26,11 +26,4 @@ class DetailViewModel:ViewModel() {
         return movie
     }
 
-    fun getVideo(id:Int):LiveData<List<Video>>{
-        var videoList=MutableLiveData<List<Video>>()
-        viewModelScope.launch {
-            videoList.value=Repository.getVideo(id).videos
-        }
-        return videoList
-    }
 }
