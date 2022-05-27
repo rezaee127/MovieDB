@@ -38,6 +38,8 @@ class SearchFragment : Fragment() {
     }
 
     private fun initView() {
+        val adapter= MovieAdapter({x->},{y->})
+        binding.rvSearch.adapter=adapter
 
         binding.btnSearch.setOnClickListener {
             if (binding.etSearch.text.isNullOrBlank())
@@ -46,12 +48,12 @@ class SearchFragment : Fragment() {
                 //lifecycleScope.async { vModel.getSearchedMovie(binding.etSearch.text.toString()) }
 
                 vModel.getSearchedMovie(binding.etSearch.text.toString()).observe(viewLifecycleOwner){
+
                     if (!it.isNullOrEmpty()){
                         binding.clSearch.visibility=View.GONE
                         binding.rvSearch.isVisible=true
                         binding.btnReturn.isVisible=true
-                        val adapter= MovieAdapter({x->},{y->})
-                        binding.rvSearch.adapter=adapter
+
                         adapter.submitList(it)
                     }else
                         Toast.makeText(requireContext(),"This movie does not exist",Toast.LENGTH_SHORT).show()
