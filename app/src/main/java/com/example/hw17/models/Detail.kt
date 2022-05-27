@@ -10,8 +10,8 @@ data class Detail(
     val adult: Boolean,
     @Json(name = "backdrop_path")
     val backdropPath: String,
-    @Json(name = "belongs_to_collection")
-    val belongsToCollection: Any,
+//    @Json(name = "belongs_to_collection")
+//    val belongsToCollection: Any,
     @Json(name = "budget")
     val budget: Int,
     @Json(name = "genres")
