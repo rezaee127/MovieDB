@@ -2,6 +2,7 @@ package com.example.hw17.ui.popular
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -38,11 +39,11 @@ class MovieListFragment : Fragment() {
 
        val adapter= MovieAdapter({id->
            vModel.getMovieDetail(id).observe(viewLifecycleOwner) {
-              // if(it!=null){
+               if(it!=null){
                    val bundle=bundleOf("id" to id)
                    findNavController().navigate(R.id.action_movieListFragment_to_detailFragment,bundle)
-//               }else
-//                   Toast.makeText(requireContext(),"There are no details for this movie",Toast.LENGTH_SHORT).show()
+               }else
+                   Toast.makeText(requireContext(),"There are no details for this movie",Toast.LENGTH_SHORT).show()
            }
        },{ movieId->
            vModel.getVideo(movieId).observe(requireActivity()) {
