@@ -13,8 +13,8 @@ data class Movie(
     val adult: Boolean,
     @Json(name = "backdrop_path")
     val backdropPath: String,
-    @Json(name = "genre_ids")
-    val genreIds: List<Int>,
+    //@Json(name = "genre_ids")
+    //val genreIds: List<Int>,
     @Json(name = "id")
     @PrimaryKey val id: Int,
     @Json(name = "original_language")

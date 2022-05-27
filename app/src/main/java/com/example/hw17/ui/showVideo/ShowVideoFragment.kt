@@ -35,7 +35,7 @@ class ShowVideoFragment : Fragment() {
     @SuppressLint("SetJavaScriptEnabled")
     private fun initWebView() {
         val url = requireArguments().getString("url")
-        if (url != null) {
+        if (!url.isNullOrBlank()) {
             binding.webView.loadUrl(url)
         }
 

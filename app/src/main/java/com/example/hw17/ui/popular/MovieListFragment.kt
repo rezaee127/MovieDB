@@ -2,14 +2,13 @@ package com.example.hw17.ui.popular
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.hw17.R
 import com.example.hw17.databinding.FragmentMovieListBinding
-import com.example.hw17.ui.MovieAdapter
+import com.example.hw17.ui.adapter.MovieAdapter
 
 
 class MovieListFragment : Fragment() {

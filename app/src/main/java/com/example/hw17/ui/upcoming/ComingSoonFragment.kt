@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.hw17.databinding.FragmentComingSoonBinding
-import com.example.hw17.ui.MovieAdapter
+import com.example.hw17.ui.adapter.ComingSoonMovieAdapter
 
 
 class ComingSoonFragment : Fragment() {
@@ -35,7 +35,7 @@ class ComingSoonFragment : Fragment() {
     }
 
     private fun initView() {
-        val adapter= MovieAdapter({x->},{y->})
+        val adapter= ComingSoonMovieAdapter({x->},{y->})
         binding.rvComingSoon.adapter=adapter
         vModel.listOfComingSoon.observe(requireActivity()){
             adapter.submitList(it)

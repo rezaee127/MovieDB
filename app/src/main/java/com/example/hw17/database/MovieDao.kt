@@ -1,11 +1,10 @@
 package com.example.hw17.database
 
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import com.example.hw17.models.Movie
 
+@Dao
 interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

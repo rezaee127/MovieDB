@@ -1,25 +1,24 @@
 package com.example.hw17.ui.search
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.app.Application
+import android.widget.Toast
+import androidx.lifecycle.*
 import com.example.hw17.data.Repository
 import com.example.hw17.models.Movie
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-class SearchViewModel:ViewModel() {
+class SearchViewModel(var app: Application): AndroidViewModel(app) {
 
     var listOfSearchedMovies=MutableLiveData<List<Movie>>()
 
     fun getSearchedMovie(movieName:String): LiveData<List<Movie>>{
         viewModelScope.async {
             try {
-                listOfSearchedMovies.value=Repository.getSearchedMovie(movieName)
+                listOfSearchedMovies.value=Repository.getSearchedMovie(movieName).movieList
             }
             catch (e:Exception){
-                //listOfSearchedMovies.value=emptyList()
+                Toast.makeText(app.applicationContext,e.message, Toast.LENGTH_SHORT).show()
             }
         }
         return listOfSearchedMovies
