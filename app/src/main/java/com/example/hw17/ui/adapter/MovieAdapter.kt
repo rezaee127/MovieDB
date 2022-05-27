@@ -1,4 +1,4 @@
-package com.example.hw17.ui
+package com.example.hw17.ui.adapter
 
 
 import android.content.Context

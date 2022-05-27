@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import com.example.hw17.databinding.FragmentSearchBinding
 import com.example.hw17.models.Movie
-import com.example.hw17.ui.MovieAdapter
+import com.example.hw17.ui.adapter.MovieAdapter
 
 
 class SearchFragment : Fragment() {
