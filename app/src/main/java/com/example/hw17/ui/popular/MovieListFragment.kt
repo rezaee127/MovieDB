@@ -38,24 +38,11 @@ class MovieListFragment : Fragment() {
     private fun initAdapter() {
 
        val adapter= MovieAdapter({id->
-           vModel.getMovieDetail(id).observe(viewLifecycleOwner) {
-               if(it!=null){
-                   val bundle=bundleOf("id" to id)
-                   findNavController().navigate(R.id.action_movieListFragment_to_detailFragment,bundle)
-               }else
-                   Toast.makeText(requireContext(),"There are no details for this movie",Toast.LENGTH_SHORT).show()
-           }
+           goToDetailFragment(id,R.id.action_movieListFragment_to_detailFragment,vModel)
        },{ movieId->
-           vModel.getVideo(movieId).observe(requireActivity()) {
-               var videoKey = it[0].key
-               val videoUrl = "https://www.youtube.com/watch?v=${videoKey}"
-               val bundle = bundleOf("url" to videoUrl)
-               findNavController().navigate(R.id.action_movieListFragment_to_showVideoFragment, bundle)
-           }
-
-       })
+           goToShowVideoFragment(movieId,R.id.action_movieListFragment_to_showVideoFragment,vModel)})
        binding.rvMovie.adapter=adapter
-       vModel.listMovie.observe(viewLifecycleOwner){
+       vModel.listMovie.observe(requireActivity()){
            adapter.submitList(it)
        }
 
@@ -83,4 +70,28 @@ class MovieListFragment : Fragment() {
     }
 
 
+}
+
+
+fun Fragment.goToShowVideoFragment(id:Int, action:Int, vModel:MovieListViewModel){
+    vModel.getVideo(id).observe(viewLifecycleOwner) {
+        if(!it.isNullOrEmpty()){
+            var videoKey = it[0].key
+            val videoUrl = "https://www.youtube.com/watch?v=${videoKey}"
+            val bundle = bundleOf("url" to videoUrl)
+            findNavController().navigate(action, bundle)
+        }
+    }
+}
+
+
+fun Fragment.goToDetailFragment(id:Int, action:Int,vModel:MovieListViewModel){
+
+    vModel.getMovieDetail(id).observe(viewLifecycleOwner) {
+        if(it!=null){
+            val bundle=bundleOf("id" to id)
+            findNavController().navigate(action,bundle)
+        }else
+            Toast.makeText(requireContext(),"There are no details for this movie",Toast.LENGTH_SHORT).show()
+    }
 }

@@ -6,8 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.example.hw17.R
 import com.example.hw17.databinding.FragmentComingSoonBinding
 import com.example.hw17.ui.adapter.ComingSoonMovieAdapter
+import com.example.hw17.ui.popular.MovieListViewModel
+import com.example.hw17.ui.popular.goToDetailFragment
+import com.example.hw17.ui.popular.goToShowVideoFragment
 
 
 class ComingSoonFragment : Fragment() {
@@ -35,7 +39,11 @@ class ComingSoonFragment : Fragment() {
     }
 
     private fun initView() {
-        val adapter= ComingSoonMovieAdapter({x->},{y->})
+        val movieListViewModel:MovieListViewModel by viewModels()
+        val adapter= ComingSoonMovieAdapter({id->
+            goToDetailFragment(id, R.id.action_comingSoonFragment_to_detailFragment,movieListViewModel)
+        },{ movieId->
+            goToShowVideoFragment(movieId, R.id.action_comingSoonFragment_to_showVideoFragment,movieListViewModel)})
         binding.rvComingSoon.adapter=adapter
         vModel.listOfComingSoon.observe(requireActivity()){
             adapter.submitList(it)

@@ -25,7 +25,6 @@ class ComingSoonMovieAdapter(var onClickTitle: (Int) -> Unit,var onClickPlayButt
 
         fun bind(comingSoonMovie: ComingSoonMovie, onClickTitle: (Int) -> Unit, onClickPlayButton:(Int)->Unit) {
             tvTitle.text = comingSoonMovie.title
-            btnPlayVideo.visibility=View.GONE
             tvTitle.setOnClickListener {
                 onClickTitle(comingSoonMovie.id)
             }

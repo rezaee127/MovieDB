@@ -9,9 +9,14 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
+import com.example.hw17.R
 import com.example.hw17.databinding.FragmentSearchBinding
 import com.example.hw17.models.Movie
+import com.example.hw17.ui.adapter.ComingSoonMovieAdapter
 import com.example.hw17.ui.adapter.MovieAdapter
+import com.example.hw17.ui.popular.MovieListViewModel
+import com.example.hw17.ui.popular.goToDetailFragment
+import com.example.hw17.ui.popular.goToShowVideoFragment
 
 
 class SearchFragment : Fragment() {
@@ -38,14 +43,19 @@ class SearchFragment : Fragment() {
     }
 
     private fun initView() {
-        val adapter= MovieAdapter({x->},{y->})
+        val movieListViewModel: MovieListViewModel by viewModels()
+
+        val adapter= MovieAdapter({id->
+            goToDetailFragment(id, R.id.action_searchFragment_to_detailFragment,movieListViewModel)
+        },{ movieId->
+            goToShowVideoFragment(movieId, R.id.action_searchFragment_to_showVideoFragment,movieListViewModel)})
+
         binding.rvSearch.adapter=adapter
 
         binding.btnSearch.setOnClickListener {
             if (binding.etSearch.text.isNullOrBlank())
                 binding.etSearch.error="Enter a name"
             else{
-                //lifecycleScope.async { vModel.getSearchedMovie(binding.etSearch.text.toString()) }
 
                 vModel.getSearchedMovie(binding.etSearch.text.toString()).observe(viewLifecycleOwner){
 
@@ -63,15 +73,11 @@ class SearchFragment : Fragment() {
 
         }
 
-
         binding.btnReturn.setOnClickListener {
             binding.clSearch.visibility=View.VISIBLE
             binding.rvSearch.isVisible=false
             binding.btnReturn.isVisible=false
-            vModel.listOfSearchedMovies= MutableLiveData<List<Movie>>()
         }
-
-
 
     }
 }
