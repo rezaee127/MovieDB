@@ -8,12 +8,12 @@ import com.example.hw17.models.Movie
 interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(Movies: List<Movie>)
+    suspend fun insertAll(Movies: List<Movie>)
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(Movies: List<Movie>)
+    @Query("DELETE FROM Movie")
+    suspend fun deleteAll()
 
 
     @Query("SELECT * FROM Movie")
-    fun getMovieList(): List<Movie>
+    suspend fun getMovieList(): List<Movie>
 }

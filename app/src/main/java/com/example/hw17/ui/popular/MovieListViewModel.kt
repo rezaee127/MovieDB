@@ -10,7 +10,6 @@ import com.example.hw17.data.Repository
 import com.example.hw17.models.Detail
 import com.example.hw17.models.Movie
 import com.example.hw17.models.Video
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class MovieListViewModel(var app:Application):AndroidViewModel(app) {
@@ -52,15 +51,14 @@ class MovieListViewModel(var app:Application):AndroidViewModel(app) {
 
     fun getVideo(id:Int):LiveData<List<Video>>{
         var videoList=MutableLiveData<List<Video>>()
-        try{
-            viewModelScope.launch {
-                videoList.value=Repository.getVideo(id).videos
+        viewModelScope.launch {
+            try {
+                videoList.value = Repository.getVideo(id).videos
+            }
+            catch (e: Exception) {
+                Toast.makeText(app.applicationContext, e.message, Toast.LENGTH_SHORT).show()
             }
         }
-        catch (e:Exception){
-            Toast.makeText(app.applicationContext,e.message,Toast.LENGTH_SHORT).show()
-        }
-
         return videoList
     }
 

@@ -8,12 +8,11 @@ import com.example.hw17.models.ComingSoonMovie
 interface ComingSoonMovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(comingSoonMovies: List<ComingSoonMovie>)
+    suspend  fun insertAll(comingSoonMovies: List<ComingSoonMovie>)
 
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(comingSoonMovies: List<ComingSoonMovie>)
-
+   @Query("DELETE FROM ComingSoonMovie")
+   suspend fun deleteAll()
 
     @Query("SELECT * FROM ComingSoonMovie")
-    fun getComingSoonMovieList(): List<ComingSoonMovie>
+    suspend fun getComingSoonMovieList(): List<ComingSoonMovie>
 }

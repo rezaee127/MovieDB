@@ -25,6 +25,7 @@ object Repository {
         var listOfMovie: List<Movie>
         try {
             listOfMovie=MovieApi.retrofitService.getPopularList().movieList
+            movieDao.deleteAll()
             movieDao.insertAll(listOfMovie)
         }catch (e:Exception){
             listOfMovie= movieDao.getMovieList()
@@ -36,6 +37,7 @@ object Repository {
         var listOfMovie: List<ComingSoonMovie>
         try {
             listOfMovie=MovieApi.retrofitService.getComingSoonList().movies
+            comingSoonMovieDao.deleteAll()
             comingSoonMovieDao.insertAll(listOfMovie)
         }catch (e:Exception){
             listOfMovie= comingSoonMovieDao.getComingSoonMovieList()
