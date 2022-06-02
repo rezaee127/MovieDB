@@ -5,11 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hw17.data.Repository
 import com.example.hw17.models.ComingSoonMovie
-import com.example.hw17.models.Movie
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.lang.Exception
+import javax.inject.Inject
 
-class ComingSoonViewModel:ViewModel() {
+@HiltViewModel
+class ComingSoonViewModel @Inject constructor(private val repository: Repository): ViewModel() {
 
      var listOfComingSoon=MutableLiveData<List<ComingSoonMovie>>()
 
@@ -20,7 +21,7 @@ class ComingSoonViewModel:ViewModel() {
     fun getComingSoonList(){
         viewModelScope.launch {
             try {
-                listOfComingSoon.value= Repository.getComingSoonList()
+                listOfComingSoon.value= repository.getComingSoonList()
 
             }catch (e:Exception){
 

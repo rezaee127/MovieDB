@@ -8,17 +8,16 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
 import com.example.hw17.R
 import com.example.hw17.databinding.FragmentSearchBinding
-import com.example.hw17.models.Movie
-import com.example.hw17.ui.adapter.ComingSoonMovieAdapter
 import com.example.hw17.ui.adapter.MovieAdapter
 import com.example.hw17.ui.popular.MovieListViewModel
 import com.example.hw17.ui.popular.goToDetailFragment
 import com.example.hw17.ui.popular.goToShowVideoFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class SearchFragment : Fragment() {
     lateinit var binding: FragmentSearchBinding
     val vModel: SearchViewModel by viewModels()

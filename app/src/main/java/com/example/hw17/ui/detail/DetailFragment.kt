@@ -10,8 +10,10 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.hw17.R
 import com.example.hw17.databinding.FragmentDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
     lateinit var binding: FragmentDetailBinding
     val vModel: DetailViewModel by viewModels()

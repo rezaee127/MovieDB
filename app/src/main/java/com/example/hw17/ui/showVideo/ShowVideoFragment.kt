@@ -3,11 +3,13 @@ package com.example.hw17.ui.showVideo
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
 import android.webkit.WebViewClient
+import androidx.fragment.app.Fragment
 import com.example.hw17.databinding.FragmentShowVideoBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class ShowVideoFragment : Fragment() {
    lateinit var binding: FragmentShowVideoBinding
     override fun onCreate(savedInstanceState: Bundle?) {

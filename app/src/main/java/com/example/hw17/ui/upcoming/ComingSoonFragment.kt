@@ -1,10 +1,10 @@
 package com.example.hw17.ui.upcoming
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.hw17.R
 import com.example.hw17.databinding.FragmentComingSoonBinding
@@ -12,8 +12,9 @@ import com.example.hw17.ui.adapter.ComingSoonMovieAdapter
 import com.example.hw17.ui.popular.MovieListViewModel
 import com.example.hw17.ui.popular.goToDetailFragment
 import com.example.hw17.ui.popular.goToShowVideoFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ComingSoonFragment : Fragment() {
     lateinit var binding:FragmentComingSoonBinding
     val vModel: ComingSoonViewModel by viewModels()

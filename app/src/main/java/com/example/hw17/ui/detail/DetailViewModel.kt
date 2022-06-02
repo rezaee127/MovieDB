@@ -6,18 +6,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hw17.data.Repository
 import com.example.hw17.models.Detail
-import com.example.hw17.models.Video
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.lang.Exception
+import javax.inject.Inject
 
-class DetailViewModel:ViewModel() {
+@HiltViewModel
+class DetailViewModel @Inject constructor(private val repository: Repository):ViewModel() {
 
     var movie=MutableLiveData<Detail>()
 
     fun getMovieDetail(movieId:Int): LiveData<Detail> {
         viewModelScope.launch {
             try{
-                movie.value=Repository.getMovieDetail(movieId)
+                movie.value=repository.getMovieDetail(movieId)
             }
             catch (e:Exception){
 

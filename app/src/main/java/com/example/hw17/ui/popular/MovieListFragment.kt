@@ -10,8 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.hw17.R
 import com.example.hw17.databinding.FragmentMovieListBinding
 import com.example.hw17.ui.adapter.MovieAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MovieListFragment : Fragment() {
     lateinit var binding: FragmentMovieListBinding
     val vModel: MovieListViewModel by viewModels()
