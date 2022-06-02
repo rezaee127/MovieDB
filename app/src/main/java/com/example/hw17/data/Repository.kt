@@ -2,17 +2,17 @@ package com.example.hw17.data
 
 import com.example.hw17.database.AppDatabase
 import com.example.hw17.models.*
-import com.example.hw17.network.MovieApi
+import com.example.hw17.network.ApiService
 import javax.inject.Inject
 
-class Repository @Inject constructor(private val db: AppDatabase) {
+class Repository @Inject constructor(private val db: AppDatabase,private val apiService: ApiService) {
 
 
 
     suspend fun getPopularList(): List<Movie> {
         var listOfMovie: List<Movie>
         try {
-            listOfMovie = MovieApi.retrofitService.getPopularList().movieList
+            listOfMovie =apiService.getPopularList().movieList
             db.movieDao().deleteAll()
             db.movieDao().insertAll(listOfMovie)
         } catch (e: Exception) {
@@ -24,7 +24,7 @@ class Repository @Inject constructor(private val db: AppDatabase) {
     suspend fun getComingSoonList(): List<ComingSoonMovie> {
         var listOfMovie: List<ComingSoonMovie>
         try {
-            listOfMovie = MovieApi.retrofitService.getComingSoonList().movies
+            listOfMovie = apiService.getComingSoonList().movies
             db.comingSoonMovieDao().deleteAll()
             db.comingSoonMovieDao().insertAll(listOfMovie)
         } catch (e: Exception) {
@@ -35,14 +35,14 @@ class Repository @Inject constructor(private val db: AppDatabase) {
 
 
     suspend fun getSearchedMovie(movieName: String): Popular {
-        return MovieApi.retrofitService.getSearchedMovie(movieName)
+        return apiService.getSearchedMovie(movieName)
     }
 
     suspend fun getMovieDetail(movieId: Int): Detail {
-        return MovieApi.retrofitService.getMovieDetail(movieId)
+        return apiService.getMovieDetail(movieId)
     }
 
     suspend fun getVideo(id: Int): Trailer {
-        return MovieApi.retrofitService.getVideo(id)
+        return apiService.getVideo(id)
     }
 }

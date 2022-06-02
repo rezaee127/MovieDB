@@ -5,37 +5,16 @@ import com.example.hw17.models.ComingSoon
 import com.example.hw17.models.Detail
 import com.example.hw17.models.Popular
 import com.example.hw17.models.Trailer
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-private const val BASE_URL = "https://api.themoviedb.org/3/"
+
 private const val API_KEY="2a7f94a255b840a7645d6759994986d6"
+const val BASE_URL = "https://api.themoviedb.org/3/"
 
 
 
-private val moshi = Moshi.Builder()
-    .add(KotlinJsonAdapterFactory())
-    .build()
-
-
-val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
-
-val client = OkHttpClient.Builder()
-    .addInterceptor(logger)
-    .build()
-
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory .create(moshi))
-    .baseUrl(BASE_URL)
-    .client(client)
-    .build()
 
 
 interface ApiService {
@@ -68,8 +47,3 @@ interface ApiService {
     ):Trailer
 }
 
-
-object MovieApi {
-    val retrofitService : ApiService by lazy {
-        retrofit.create(ApiService::class.java) }
-}
