@@ -1,22 +1,18 @@
 package com.example.hw17.data
 
-import com.example.hw17.database.AppDatabase
 import com.example.hw17.models.*
-import com.example.hw17.network.ApiService
 import javax.inject.Inject
 
-class Repository @Inject constructor(private val db: AppDatabase,private val apiService: ApiService) {
-
-
+class Repository @Inject constructor(private val localDataSource: LocalDataSource,private val remoteDataSource: RemoteDataSource) {
 
     suspend fun getPopularList(): List<Movie> {
         var listOfMovie: List<Movie>
         try {
-            listOfMovie =apiService.getPopularList().movieList
-            db.movieDao().deleteAll()
-            db.movieDao().insertAll(listOfMovie)
+            listOfMovie =remoteDataSource.getPopularList().movieList
+            localDataSource.deleteAllMovie()
+            localDataSource.insertAllMovie(listOfMovie)
         } catch (e: Exception) {
-            listOfMovie = db.movieDao().getMovieList()
+            listOfMovie = localDataSource.getMovieList()
         }
         return listOfMovie
     }
@@ -24,25 +20,25 @@ class Repository @Inject constructor(private val db: AppDatabase,private val api
     suspend fun getComingSoonList(): List<ComingSoonMovie> {
         var listOfMovie: List<ComingSoonMovie>
         try {
-            listOfMovie = apiService.getComingSoonList().movies
-            db.comingSoonMovieDao().deleteAll()
-            db.comingSoonMovieDao().insertAll(listOfMovie)
+            listOfMovie = remoteDataSource.getComingSoonList().movies
+            localDataSource.deleteAllComingSoonMovie()
+            localDataSource.insertAllComingSoonMovie(listOfMovie)
         } catch (e: Exception) {
-            listOfMovie = db.comingSoonMovieDao().getComingSoonMovieList()
+            listOfMovie = localDataSource.getComingSoonMovieList()
         }
         return listOfMovie
     }
 
 
     suspend fun getSearchedMovie(movieName: String): Popular {
-        return apiService.getSearchedMovie(movieName)
+        return remoteDataSource.getSearchedMovie(movieName)
     }
 
     suspend fun getMovieDetail(movieId: Int): Detail {
-        return apiService.getMovieDetail(movieId)
+        return remoteDataSource.getMovieDetail(movieId)
     }
 
     suspend fun getVideo(id: Int): Trailer {
-        return apiService.getVideo(id)
+        return remoteDataSource.getVideo(id)
     }
 }
