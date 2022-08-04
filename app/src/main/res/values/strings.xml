@@ -1,5 +1,16 @@
 <resources>
-    <string name="app_name">hw17</string>
+    <string name="app_name">MovieDB</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="play">play</string>
+    <string name="movie_image">movie_image</string>
+    <string name="return1">Return</string>
+    <string name="movie_s_name">movie\'s name</string>
+    <string name="search">search</string>
+    <string name="with_keywords">with_keywords</string>
+    <string name="without_keywords">without_keywords</string>
+    <string name="with_cast">with_cast</string>
+    <string name="with_genres">with_genres</string>
+    <string name="include_video">include_video</string>
+    <string name="discover">Discover</string>
 </resources>

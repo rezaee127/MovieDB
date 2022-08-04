@@ -37,12 +37,11 @@ class MovieListFragment : Fragment() {
     }
 
     private fun initAdapter() {
-
-       val adapter= MovieAdapter({id->
-           goToDetailFragment(id,R.id.action_movieListFragment_to_detailFragment,vModel)
-       },{ movieId->
-           goToShowVideoFragment(movieId,R.id.action_movieListFragment_to_showVideoFragment,vModel)})
-       binding.rvMovie.adapter=adapter
+       requireActivity().title="Movie List"
+       val adapter= MovieAdapter { id ->
+           goToDetailFragment(id, R.id.action_movieListFragment_to_detailFragment, vModel)
+       }
+        binding.rvMovie.adapter=adapter
        vModel.listMovie.observe(requireActivity()){
            adapter.submitList(it)
        }
