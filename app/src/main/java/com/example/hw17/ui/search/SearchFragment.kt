@@ -13,7 +13,6 @@ import com.example.hw17.databinding.FragmentSearchBinding
 import com.example.hw17.ui.adapter.MovieAdapter
 import com.example.hw17.ui.popular.MovieListViewModel
 import com.example.hw17.ui.popular.goToDetailFragment
-import com.example.hw17.ui.popular.goToShowVideoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -43,11 +42,10 @@ class SearchFragment : Fragment() {
 
     private fun initView() {
         val movieListViewModel: MovieListViewModel by viewModels()
-
-        val adapter= MovieAdapter({id->
-            goToDetailFragment(id, R.id.action_searchFragment_to_detailFragment,movieListViewModel)
-        },{ movieId->
-            goToShowVideoFragment(movieId, R.id.action_searchFragment_to_showVideoFragment,movieListViewModel)})
+        requireActivity().title="Search"
+        val adapter= MovieAdapter { id ->
+            goToDetailFragment(id, R.id.action_searchFragment_to_detailFragment, movieListViewModel)
+        }
 
         binding.rvSearch.adapter=adapter
 
@@ -55,27 +53,25 @@ class SearchFragment : Fragment() {
             if (binding.etSearch.text.isNullOrBlank())
                 binding.etSearch.error="Enter a name"
             else{
-
-                vModel.getSearchedMovie(binding.etSearch.text.toString()).observe(viewLifecycleOwner){
-
-                    if (!it.isNullOrEmpty()){
-                        binding.clSearch.visibility=View.GONE
-                        binding.rvSearch.isVisible=true
-                        binding.btnReturn.isVisible=true
-
-                        adapter.submitList(it)
-                    }else
-                        Toast.makeText(requireContext(),"This movie does not exist",Toast.LENGTH_SHORT).show()
-                }
-
+                vModel.getSearchedMovie(binding.etSearch.text.toString())
             }
 
         }
 
+        vModel.listOfSearchedMovies.observe(viewLifecycleOwner){
+
+            if (!it.isNullOrEmpty()){
+                binding.clSearch.visibility=View.GONE
+                binding.llSearchResult.isVisible=true
+
+                adapter.submitList(it)
+            }else
+                Toast.makeText(requireContext(),"This movie does not exist", Toast.LENGTH_SHORT).show()
+        }
+
         binding.btnReturn.setOnClickListener {
             binding.clSearch.visibility=View.VISIBLE
-            binding.rvSearch.isVisible=false
-            binding.btnReturn.isVisible=false
+            binding.llSearchResult.isVisible=false
         }
 
     }

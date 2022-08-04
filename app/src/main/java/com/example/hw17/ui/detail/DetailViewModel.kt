@@ -21,7 +21,6 @@ class DetailViewModel @Inject constructor(private val repository: Repository):Vi
                 movie.value=repository.getMovieDetail(movieId)
             }
             catch (e:Exception){
-
             }
         }
         return movie

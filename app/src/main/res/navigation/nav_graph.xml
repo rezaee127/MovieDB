@@ -18,9 +18,7 @@
         <action
             android:id="@+id/action_movieListFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_movieListFragment_to_showVideoFragment"
-            app:destination="@id/showVideoFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/comingSoonFragment"
@@ -30,9 +28,7 @@
         <action
             android:id="@+id/action_comingSoonFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_comingSoonFragment_to_showVideoFragment"
-            app:destination="@id/showVideoFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -42,9 +38,7 @@
         <action
             android:id="@+id/action_searchFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_searchFragment_to_showVideoFragment"
-            app:destination="@id/showVideoFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -52,6 +46,9 @@
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
 
+        <action
+            android:id="@+id/action_detailFragment_to_showVideoFragment"
+            app:destination="@id/showVideoFragment" />
     </fragment>
     <fragment
         android:id="@+id/showVideoFragment"

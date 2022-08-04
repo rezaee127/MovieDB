@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="15dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.upcoming.ComingSoonFragment">
 
@@ -11,8 +10,8 @@
         android:id="@+id/rv_coming_soon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        />
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"/>
 
 
 </LinearLayout>

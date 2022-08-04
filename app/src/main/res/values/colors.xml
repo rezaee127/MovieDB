@@ -7,4 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+        <color name="purple_513">#1d2b64</color>
+        <color name="back13">#f8cdda</color>
+    <!--    <color name="back13">#D7E6D5B6</color>-->
+        <color name="teal_213">#C0A890</color>
+        <color name="on_secondary_213">#eeeeee</color>
+
+<!--    <color name="purple_513">#003973</color>-->
+<!--    <color name="back13">#e5e5be</color>-->
+<!--&lt;!&ndash;    <color name="back13">#D7E6D5B6</color>&ndash;&gt;-->
+<!--    <color name="teal_213">#C0A890</color>-->
+<!--    <color name="on_secondary_213">#eeeeee</color>-->
 </resources>

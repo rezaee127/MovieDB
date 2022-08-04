@@ -21,7 +21,6 @@ class SearchViewModel@Inject constructor(private val repository: Repository):Vie
                 listOfSearchedMovies.value=repository.getSearchedMovie(movieName).movieList
             }
             catch (e:Exception){
-                //Toast.makeText(app.applicationContext,e.message, Toast.LENGTH_SHORT).show()
             }
         }
         return listOfSearchedMovies

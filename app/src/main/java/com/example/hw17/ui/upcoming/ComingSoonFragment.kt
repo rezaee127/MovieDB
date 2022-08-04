@@ -11,17 +11,12 @@ import com.example.hw17.databinding.FragmentComingSoonBinding
 import com.example.hw17.ui.adapter.ComingSoonMovieAdapter
 import com.example.hw17.ui.popular.MovieListViewModel
 import com.example.hw17.ui.popular.goToDetailFragment
-import com.example.hw17.ui.popular.goToShowVideoFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ComingSoonFragment : Fragment() {
-    lateinit var binding:FragmentComingSoonBinding
-    val vModel: ComingSoonViewModel by viewModels()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private lateinit var binding:FragmentComingSoonBinding
+    private val vModel: ComingSoonViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,11 +35,12 @@ class ComingSoonFragment : Fragment() {
     }
 
     private fun initView() {
+        requireActivity().title="Coming Soon"
         val movieListViewModel:MovieListViewModel by viewModels()
-        val adapter= ComingSoonMovieAdapter({id->
-            goToDetailFragment(id, R.id.action_comingSoonFragment_to_detailFragment,movieListViewModel)
-        },{ movieId->
-            goToShowVideoFragment(movieId, R.id.action_comingSoonFragment_to_showVideoFragment,movieListViewModel)})
+        val adapter= ComingSoonMovieAdapter { id ->
+            goToDetailFragment(id, R.id.action_comingSoonFragment_to_detailFragment, movieListViewModel)
+        }
+
         binding.rvComingSoon.adapter=adapter
         vModel.listOfComingSoon.observe(requireActivity()){
             adapter.submitList(it)
