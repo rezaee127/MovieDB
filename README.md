@@ -1,36 +1,23 @@
 # MovieDB
 
 
-# Online Shop (Digikala Ui)
-
-### Simple Online Android Shop
 <br>
 
-| Popular movies | Movie details | Movie details |
+| Popular movies | Movie details | Show Video |
 |--|--|--|
-| <img src="https://user-images.githubusercontent.com/99007231/184023900-dac6999d-6208-4500-90b3-f7dc88a7f063.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184022622-e68b5be4-7ce0-43ea-a2c1-7bbd2075ae21.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184024504-da1c58b4-d8c7-4f69-a314-34621e1dd028.png" width=250px> |
+| <img src="https://user-images.githubusercontent.com/99007231/184023900-dac6999d-6208-4500-90b3-f7dc88a7f063.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184022622-e68b5be4-7ce0-43ea-a2c1-7bbd2075ae21.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184022771-87c2a7f2-4d38-44a5-91f0-8c3b67d85441.png" width=250px> |
 
 | Coming Soon  | Search | Search |
 |--|--|--|
 | <img src="https://user-images.githubusercontent.com/99007231/184024461-5392aaf5-9372-4641-8dc8-ee12e1ce4325.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184022794-27373295-8892-46fd-9717-550e76a905c0.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184022827-bce8eecd-f4ff-4626-a93c-d59c823a12d3.png" width=250px> |
 
-
+| Movie details  | Show Video | Show Video |
 |--|--|--|
-| <img src="https://user-images.githubusercontent.com/99007231/184022771-87c2a7f2-4d38-44a5-91f0-8c3b67d85441.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184024486-4cc2fb1f-3ecd-4f72-8e80-2e19d8f3dc73.png" width=250px> | <img src="" width=250px> |
+| <img src="https://user-images.githubusercontent.com/99007231/184024504-da1c58b4-d8c7-4f69-a314-34621e1dd028.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184028047-cd3908c9-22b0-40b9-9dd3-aa4ffc53fa90.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184024486-4cc2fb1f-3ecd-4f72-8e80-2e19d8f3dc73.png" width=250px> | 
 
 
- - Main View :  Show Top Rated, Popular, Best Seller And Special Products With An Auto Slider.
- - Product View :  Product Name And Details Such As Description, Color, Size And .... + Possibility To Add To The Card.
- - Card View :  Show Final Money And Count The Products You Want To Buy.
- - Filter And Search View : Search Product Name And Filter Them By Their Detail. Also You Can Sorting Them.
- - Category View : Show Categories And The Products That Are In That Category.
- 
- - MVVM Architecture
- - Using LiveData and DataBinding
 
-<br>
 
- ## Features
  
  ## External Libraries
  - Material
