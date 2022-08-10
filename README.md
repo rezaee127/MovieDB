@@ -12,7 +12,7 @@
 | Coming Soon  | Search | Search |
 |--|--|--|
 | <img src="https://user-images.githubusercontent.com/99007231/184024461-5392aaf5-9372-4641-8dc8-ee12e1ce4325.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184022794-27373295-8892-46fd-9717-550e76a905c0.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184022827-bce8eecd-f4ff-4626-a93c-d59c823a12d3.png" width=250px> |
-<br>
+<br><br>
 
 | Show Video | Movie details  | Show Video | 
 |--|--|--|
@@ -20,6 +20,11 @@
 
 
 <br>
+
+ - MVVM Architecture
+ - Using LiveData , DataBinding , WebView and GitFlow
+ <br>
+
  
  ## External Libraries 
  - Retrofit
