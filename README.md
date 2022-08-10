@@ -15,10 +15,11 @@
 <br>
 <br>
 
+<!--
 | Show Video | Movie details  | Show Video | 
 |--|--|--|
 |  <img src="https://user-images.githubusercontent.com/99007231/184024486-4cc2fb1f-3ecd-4f72-8e80-2e19d8f3dc73.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184024504-da1c58b4-d8c7-4f69-a314-34621e1dd028.png" width=250px> | <img src="https://user-images.githubusercontent.com/99007231/184028047-cd3908c9-22b0-40b9-9dd3-aa4ffc53fa90.png" width=250px> |
-
+-->
 
 <br>
 
